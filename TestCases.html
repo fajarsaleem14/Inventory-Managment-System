@@ -1,0 +1,419 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title> Testing Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .document-container {
+            max-width: 900px;
+            width: 100%;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+
+        h2 {
+            color: #3498db;
+            font-weight: 500;
+            margin: 30px 0 15px 0;
+            font-size: 1.6rem;
+            text-align: left;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+            h2::before {
+                
+                margin-right: 10px;
+            }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            font-weight: 500;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+        .highlight-box {
+            background-color: #f0f7ff;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+            border-radius: 0 8px 8px 0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .pass {
+            color: #2ecc71;
+            font-weight: 500;
+        }
+
+        .fail {
+            color: #e74c3c;
+            font-weight: 500;
+        }
+
+        .divider {
+            border-top: 1px solid #e0e0e0;
+            margin: 30px auto;
+            width: 100%;
+        }
+
+        .note {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-top: 30px;
+            text-align: left;
+            padding-left: 20px;
+            border-left: 3px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="document-container">
+        <h1>Problem 3 - Testing of Security Features</h1>
+        <div class="highlight-box">
+            <h3>Project Title:</h3>
+            <p>Inventory Management System</p>
+
+            <h3>Proposed By:</h3>
+            <p>Fajar Saleem</p>
+            <p>Registration Number: 03-3-1-015-22</p>
+        </div>
+        <h2>1. Role-Based Access Control (RBAC)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test Case ID</th>
+                    <th>Description</th>
+                    <th>Input</th>
+                    <th>Expected Output</th>
+                    <th>Actual Output</th>
+                    <th>Pass/Fail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TC1.1: Admin login</td>
+                    <td>Admin logs in and accesses AdminProducts.aspx</td>
+                    <td>Admin credentials</td>
+                    <td>Redirect to AdminDashboard.aspxy</td>
+                    <td>Success</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+                <tr>
+                    <td>TC1.2: Manager login</td>
+                    <td>Manager logs in tries to access its functionalities</td>
+                    <td>Manager credentials</td>
+                    <td>Redirect to ManagerDashboard.aspx</td>
+                    <td>Success</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+                <tr>
+                    <td> Viewer accessing admin pagen</td>
+                    <td>Viewer accesses AdminDashboard.aspx</td>
+                    <td>Login as Viewer, access Admin URL</td>
+                    <td>Redirect to error or access denied</td>
+                    <td>Access Denied</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. Session Management</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test Case ID</th>
+                    <th>Description</th>
+                    <th>Input</th>
+                    <th>Expected Output</th>
+                    <th>Actual Output</th>
+                    <th>Pass/Fail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TC_SESS_01</td>
+                    <td>User logs in</td>
+                    <td>Valid login</td>
+                    <td>Session is created</td>
+                    <td>Session("Username") set</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+                <tr>
+                    <td>TC_SESS_02</td>
+                    <td>Access page after logout</td>
+                    <td>No session</td>
+                    <td>Redirect to login</td>
+                    <td>Redirected</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+                <tr>
+                    <td>TC_SESS_03</td>
+                    <td>Tamper session</td>
+                    <td>Access URL of dashboard without logging in</td>
+                    <td>Redirect or logout</td>
+                    <td>Redirected</td>
+                    <td class="pass">Pass</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>3. Input Validation</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test Case ID</th>
+                    <th>Description</th>
+                    <th>Input</th>
+                    <th>Expected Output</th>
+                    <th>Actual Output</th>
+                    <th>Pass/Fail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TC_INVAL_01</td>
+                    <td>Leave all fields blank</td>
+                    <td>Empty fields</td>
+                    <td>Show error</td>
+                    <td>Validation error</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+                <tr>
+                    <td>TC_INVAL_02</td>
+                    <td>Enter invalid email in form</td>
+                    <td>wrong@email</td>
+                    <td>Show format error</td>
+                    <td>Format error shown</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+                <tr>
+                    <td>TC_INVAL_03</td>
+                    <td>Use special characters in name</td>
+                    <td>"F@j@r"</td>
+                    <td>Show validation error</td>
+                    <td>Validation blocked</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>4. Parameterized SQL Queries</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test Case ID</th>
+                    <th>Description</th>
+                    <th>Input</th>
+                    <th>Expected Output</th>
+                    <th>Actual Output</th>
+                    <th>Pass/Fail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TC_SQL_01</td>
+                    <td>SQL injection attempt in username</td>
+                    <td>' OR '1'='1</td>
+                    <td>Login fails</td>
+                    <td>Invalid credentials</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+                <tr>
+                    <td>TC_SQL_02</td>
+                    <td>SQL injection attempt in password</td>
+                    <td>'DROP TABLE Users--</td>
+                    <td>Login fails</td>
+                    <td>Invalid credentials</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>5. Authentication System</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test Case ID</th>
+                    <th>Description</th>
+                    <th>Input</th>
+                    <th>Expected Output</th>
+                    <th>Actual Output</th>
+                    <th>Pass/Fail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TC_AUTH_01</td>
+                    <td>Correct credentials</td>
+                    <td>Valid user & pass</td>
+                    <td>Login success</td>
+                    <td>Redirected</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+                <tr>
+                    <td>TC_AUTH_02</td>
+                    <td>Incorrect credentials</td>
+                    <td>Invalid password</td>
+                    <td>Show error</td>
+                    <td>Error shown</td>
+                    <td class="pass">Pass</td>
+                </tr>
+                <tr>
+                    <td>TC_AUTH_03</td>
+                    <td>Non-existent user</td>
+                    <td>Fake username</td>
+                    <td>Show error</td>
+                    <td>Error shown</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>6. Secure Redirection and Page Access Check</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test Case ID</th>
+                    <th>Description</th>
+                    <th>Input</th>
+                    <th>Expected Output</th>
+                    <th>Actual Output</th>
+                    <th>Pass/Fail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TC_REDIRECT_01</td>
+                    <td>Access page via URL directly without login</td>
+                    <td>No session</td>
+                    <td>Redirect to login</td>
+                    <td>Redirected</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+                <tr>
+                    <td>TC_REDIRECT_02</td>
+                    <td>Access page with incorrect role</td>
+                    <td>Viewer tries admin page</td>
+                    <td>Redirect or error</td>
+                    <td>Redirected</td>
+                    <td class="pass">Pass</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>7. CAPTCHA on Login Page</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test Case ID</th>
+                    <th>Description</th>
+                    <th>Input</th>
+                    <th>Expected Output</th>
+                    <th>Actual Output</th>
+                    <th>Pass/Fail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TC_CAPTCHA_01</td>
+                    <td>Submit correct CAPTCHA</td>
+                    <td>Correct answer</td>
+                    <td>Login processed</td>
+                    <td>Success</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+                <tr>
+                    <td>TC_CAPTCHA_02</td>
+                    <td>Submit incorrect CAPTCHA</td>
+                    <td>Wrong answer</td>
+                    <td>Show error</td>
+                    <td>CAPTCHA error</td>
+                    <td class="pass"> Pass</td>
+                </tr>
+                <tr>
+                    <td>TC_CAPTCHA_03</td>
+                    <td>Leave CAPTCHA blank</td>
+                    <td>No input</td>
+                    <td>Show error</td>
+                    <td>CAPTCHA error</td>
+                    <td class="pass">Pass</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Security Feature 7: Password Hashing (Optional/Future)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test Case</th>
+                    <th>Input</th>
+                    <th>Expected Output</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TC7.1: Check database password storage</td>
+                    <td>View DB</td>
+                    <td>Passwords should be hashed, not plaintext</td>
+                    <td class="fail"> Fail / Plan to implement</td>
+                </tr>
+                <tr>
+                    <td>TC7.2: Login with hashed password</td>
+                    <td>Match hashed input with DB hash</td>
+                    <td>Login successful if correct</td>
+                    <td class="fail"> Not implemented yet</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</body>
+</html>
